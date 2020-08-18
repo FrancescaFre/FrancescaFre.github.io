@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>project</title>
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <title>project1</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andika">
-    <link rel="stylesheet" href="/assets/css/Article-List.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Article-List.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
@@ -17,16 +17,258 @@
             <div
                 class="collapse navbar-collapse text-dark" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" style="font-size: 20px;" href="/index.html">Presentazione</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" style="font-size: 20px;" href="index.html">Presentazione</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" style="font-size: 20px;">Teoria</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/istruzioni.html" style="font-size: 20px;">Istruzioni</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="game/game.html" style="font-size: 20px;">Applicazione</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="istruzioni.html" style="font-size: 20px;">Istruzioni</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="applicazione.html" style="font-size: 20px;">Applicazione</a></li>
                 </ul>
         </div>
         </div>
-    </nav>
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    </nav><div class="container">
+
+    <hr>
+    <h1 id="teoria">Teoria</h1>
+    <h2 id="raymarching">Raymarching</h2>
+    <p><img src="assets/img/raymarching.png" alt="RM" width="50%" height="50%"></p>
+    <p>Il raymarching è una tecnica che permette di gestire la grafica implicita, cioè in cui non ci sono modelli o
+        figure e viene tutto calcolato al momento basandosi sulle informazioni nel mondo. 
+    </br>
+    Questa tecnica consiste nel generare un raggio per ogni pixel a schermo, farlo marciare fino a quando viene
+        rilevato un punto in prossimità (definita dalla precisione) dal punto del raggio che marcia.</p>
+    <h2 id="algoritmo">Algoritmo</h2>
+    <pre><code>RM Raymarching(float3 ro, float3 rd, float depth)
+{
+    const int max_iteration = _maxIterations;
+    float t = 0; //distance travelled along the ray dir
+
+    Hit hit;
+
+    for (int i = 0; i < max_iteration; i++)
+    {
+        float3 p = ro + rd * t; //position
+        hit = distanceField(p); //check in distancefield
+        t += hit.dist;
+
+        if (t > _maxDistance || t >= depth || hit.dist < _accuracy)
+            break;
+    }
+
+    RM result;
+    result.travel = t;
+    result.hit = hit;
+    return result;
+} </code></pre>
+    <p>L&#39;algoritmo è molto semplice, si prende un punto nello spazio detto Ray Origin (ro) dalla quale il raggio
+        parte, mediante Ray Direction (rd) viene definita l&#39;angolazione di questo raggio (per colpire l&#39;ennesimo
+        pixel a schermo). </br>
+        Fino a quando il raggio non supera le iterazioni massime
+        consentite, viene controllata la punta del raggio,
+        dove t è una quantità che definisce quanto ha marciato il raggio: </br>
+    </br>
+        punta del raggio = ro + rd * t
+    </br>
+    
+    <p>Si controlla mediante le funzioni di distanza, quanto questa punta del raggio è vicina ad una superficie. 
+    L&#39;algoritmo termina quando la punta è abbastanza vicina alla superficie, cioè la distanza tra punta e
+        superficie è minore di un valore fornito detto precisione (_accuracy), oppure il raggio ha marciato troppo
+        superando la profondità o la distanza massima fissata. 
+    </br>Nel primo caso viene definito e colorato il punto di contatto, quindi il punto sulla superficie sempre definito
+        con: </br></br>
+        punto = origine (ro) + direzione (rd) * viaggio (t)</br>
+    Nel secondo caso il raggio non ha incontrato nulla e deve mostrare lo sfondo della scena
+    <h2 id="valori-chiave">Valori chiave</h2>
+    <ul>
+        <li>Precisione
+            <img src="assets/img/precision.png" alt="RM"></li>
+    </ul>
+    <p>Il valore indica la precisione della figura rappresentata, un valore molto piccolo implica più precisione. </p>
+    <ul>
+        <li>Distanza
+            <img src="assets/img/max_dist.png" alt="RM"></li>
+    </ul>
+    <p>La distanza serve per definire un limite sul percorso del raggio, cioè quanto un raggio può marciare prima di
+        trovare una figura. Questo implica che le figure poste più lontano non possono essere mostrate in quanto non
+        raggiunte dal raggio.</p>
+    <ul>
+        <li>Steps
+            <img src="assets/img/max_steps.png" alt="RM"></li>
+    </ul>
+    <p>Un valore piccolo implica imprecisione dell&#39;immagine, soprattutto su oggetti posti dietro ad altri che si
+        deformano (il piano nell&#39;immagine). Più è alto il valore di step, maggiore è la computazione necessaria.
+    </p>
+    <h2 id="figure-o-primitive">Figure o Primitive</h2>
+    <h3 id="piano">Piano</h3>
+    <img src="assets/img/plane.png" alt="RM" width="70%" height="70%">
+    <pre><code>
+float df_plane (vec3 rayPos)
+	return 2+rayPos.y;</code></pre>
+La distanza dal piano è la distanza dal componente y del raggio + 2, quindi il piano è sempre posizionato a 0,
+        -2, 0
+    <h3 id="sfera">Sfera</h3>
+    <img src="assets/img/sphere.png" alt="RM" width="40%" height="40%">
+    <pre><code>
+float df_Sphere(vec3 rayPos, vec3 spherePos, float size)
+    return length(rayPos - spherePos) - size;</code></pre>
+    <p>La distanza dalla superficie di una sfera è banalmente la distanza tra la punta del raggio e il centro, meno il
+        raggio della sfera. </p>
+    <h3 id="cubo">Cubo</h3>
+    <img src="assets/img/box.png" alt="RM" width="40%" height="40%">
+    <pre><code>
+float df_Box(vec3 rayPos, vec3 pos, float s )
+{
+    pos = rayPos - pos;
+    vec3 size = vec3(s);
+    vec3 d = abs(pos) - size;
+    float dist = length(max(d,0.0));
+    return dist;
+} </code></pre>
+    <p>Dato un cubo di lato s, la distanza dalla superficie si calcola prima valutando la distanza tra la punta del
+        raggio e il centro del cubo.
+        Si calcola d, in valore assoluto la posizione del raggio meno la distanza sulle 3 dimensioni del cubo.
+        Poi ne prendo la distanza come dimensione del vettore risultante d, sempre se questo è maggiore di 0.</p>
+    <h3 id="toro">Toro</h3>
+    <p><img src="assets/img/torus.png" alt="RM" width="50%" height="50%"></p>
+    <pre><code>
+float df_Torus( vec3 rayPos, vec3 pos, float rad)
+{
+    pos = rayPos - pos;
+    vec2 radius = vec2(rad, rad*0.3);
+    vec2 q = vec2(length(pos.xz)-radius.x,pos.y);
+    float dist = length(q)-radius.y;
+    return dist;
+}</code></pre>
+    <p>Prima calcolo il vettore tra la punta del raggio e il centro della figura.
+        Genero un vettore di float in cui memorizzo il valore dei due raggi, cioè quello esterno e quello più piccolo
+        che definisce il tubo.
+        Genero il vettore <code>q</code> come la distanza dei componenti xy della punta del raggio e il raggio della
+        figura, e il componente y della posizione della figura.
+        La distanza quindi è la dimensione del vettore <code>q</code> meno il raggio del tubo del toro.</p>
+    <h2 id="operatori">Operatori</h2>
+    <p>Le funzioni degli operatori lavorano sulle distanze delle superfici ed elaborano la distanza finale.</p>
+    <h3 id="unione">Unione</h3>
+    <img src="assets/img/union.png" alt="RM">
+    <pre><code>
+float opUnion( float d1, float d2 )
+    min(d1,d2);     </code></pre><p>Si tratta dell&#39;operatore più semplice, restituisce il valore più piccolo delle due distanze. </p>
+    <h3 id="sottrazione">Sottrazione</h3>
+    <p><img src="assets/img/sub.png" alt="RM"></p>
+    <pre><code>
+float opSub( float d1, float d2 )
+    max(-d1,d2);
+    </code></pre>
+    <p><strong>Come funziona</strong>: Ipotizzando che d1 sia A e d2 sia B
+        Nel primo step il raggio è fuori da A e fuori da B, tra le due distanze il maggiore è B, perchè ci sono due
+        distanze positive di cui una posta al negativo (A), il raggio avanza fino alla superficie di B.</p>
+    <p><img src="assets/img/sub1.png" alt="RM"></p>
+    <p>Il raggio è dentro A, ma ancora fuori da B(molto vicino alla superficie), significa che il valore negativo di A
+        diventa positivo (è già meno perchè è stato applicata la sottrazione del raggio della sfera) ed è più grande di
+        B. Il prossimo step avanza del valore di distanza -A</p>
+    <p><img src="assets/img/sub2.png" alt="RM"></p>
+    <p>Dato che la distanza che mi serve deve avere precisione 0.01, il valore ritornato non è ancora sufficiente,
+        quindi il prossimo step implica un nuovo avanzamento di distanza posizione - centro di A (perchè A è più
+        vicino).
+        Il raggio avanza ancora perchè la distanza ritornata dalla funzione è ancora più grande di 0.01 (precisione di
+        default).</p>
+    <p><img src="assets/img/sub3.png" alt="RM"></p>
+    <p>Ultimo passaggio: il raggio è dentro A e dentro B, attenzione, B non è negato, quindi da quando il raggio è
+        entrato dentro la figura di B il suo valore sarà sempre negativo. Dato che si è avanzato di A, ora anche se è
+        0.01, è il valore più grande dei due e viene restituita la minima precisione raggiunta.</p>
+    <h3 id="intersezione">Intersezione</h3>
+    <img src="assets/img/int.png" alt="RM">
+    <pre><code>
+float opIntersect( float d1, float d2 )
+    max(d1,d2);</code></pre>
+    <p><img src="assets/img/int1.png" alt="RM"></p>
+    <p>Nel primo step, si prende la distanza più lontana, cioè B e si raggiunge il suo bordo.
+        Ora si è dentro A e fuori da B</p>
+    <p><img src="assets/img/int2.png" alt="RM"></p>
+    <p>Si è raggiunta una distanza accettabile per la precisione e si ferma il raymarching.
+        Quindi con il raggio fuori da A AND B, la distanza maggiore è quella della figura più lontana
+        Con il raggio dentro A OR B, la distanza maggiore è quella della figura all&#39;esterno. </p>
+    <h3 id="smooth">Smooth</h3>
+<table style="width:100%">
+<tr>
+    <th><img src="assets/img/s_union.png" alt="RM" width="300" height="200"> </th>
+	<th><img src="assets/img/s_sub.png" alt="RM" width="300" height="200"> </th>
+	<th><img src="assets/img/s_inter.png" alt="RM" width="250" height="200"></th>
+</tr>
+</table>
+    <pre><code>
+float opSmoothUnion(float d1, float d2, float k )
+{
+    float h = clamp( 0.5 + 0.5*(d2-d1)/k, 0.0, 1.0 );
+    return mix( d2, d1, h ) - k*h*(1.0-h); 
+}
+
+float opSmoothSub( float d1, float d2, float k ) 
+{
+    float h = clamp( 0.5 - 0.5*(d2+d1)/k, 0.0, 1.0 );
+    return mix( d2, -d1, h ) + k*h*(1.0-h); 
+}
+
+float opSmoothIntersection( float d1, float d2, float k ) 
+{
+    float h = clamp( 0.5 - 0.5*(d2-d1)/k, 0.0, 1.0 );
+    return mix( d2, d1, h ) + k*h*(1.0-h); 
+} </code></pre>
+    <p>Sono gli stessi operatori, ma con l&#39;interpolazione polinomiale.</p>
+    <h3 id="altre-azioni-sulle-figure">Altre azioni sulle figure</h3>
+    <ul>
+        <li>Rotazione</li>
+    </ul>
+    <pre><code>float3 Rotation(float3 ray, float4 rotation_vector) {
+    float a = rotation_vector.w; 
+    float s = sin(a);
+    float c = cos(a);
+    float2x2 rotation_mat = float2x2(c, -s, s, c);
+
+    ray.xy = mul(ray.xy, rotation_mat); 
+    return ray; 
+}
+
+...
+float3 p = raypos; 
+p = p - _positions[i]; //traslation
+p = Rotation(p, _rotations[i]); //rotation
+
+df_Sphere(p, _size[i]);</code></pre>
+    <p>Per ruotare una figura nella scena non devo agire sulla figura stessa, ma sul &quot;punto di vista&quot; della
+        figura, infatti è necessario ruotare il raggio in modo da cambiare il punto di vista del raymarching in fase di
+        calcolo. </br>
+    Per ottenere una rotazione in locale sull&#39;oggetto prima si trasla, cioè si ottiene la posizione
+        dell&#39;oggetto, poi ruota.
+        L&#39;operazione contraria provocherebbe la rotazione e traslazione, quindi uno spostamento nello spazio. </p>
+    <ul>
+        <li>
+            Evidenziare le figure
+<pre><code>
+float border = dot(normalize(cameraPosition - p), n);
+if (border > -0.3 && border < 0.3)
+        return float3(1.0,1.0,1.0);</code></pre>
+            <p>Viene fatto il dot product tra direzione del vettore punto - Ray Origin e il vettore normale del punto
+                sulla superficie, se è un valore tra -0.3 e 0.3, lo interpreto come un bordo e lo uso per identificare
+                la parte da colorare di bianco.</p>
+        </li>
+        <li>
+            <p>Blend Color</p>
+            <pre><code>color += max(0.0, 1.0 - ShapeDistance(raypos, i).dist) * _colors[i] * 1.0;</code></pre>            
+			<p>Per capire di che colore deve essere il punto da rappresentare, cerco la distanza di quel punto da ogni
+                figura presente nella scena.
+                Per ogni figura controllo quanto questa è vicina, se è molto vicina <code>1.0 - distanza</code> darà un
+                valore molto vicino all&#39;1, quindi moltiplico questo valore per il colore di quella figura vicina (1
+                * colore implica un colore pieno), quindi questo processo mi serve per misurare quanto una figura
+                contibuisce al colore di quel punto.
+
+                Per i punti più lontani <code>1 - un valore alto</code>, restituisce un valore minore di zero, quindi
+                non fornisce contributo di colore su quel punto. Infine viene fatto un clamp per evitare che un colore
+                con numeri negativi influenzi il colore finale.</p>
+        </li>
+    </ul>
+
+</div>
+    <div class="container" style="color: rgb(52,58,64);background-color: rgb(52,58,64);"></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

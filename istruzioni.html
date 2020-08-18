@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>project</title>
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <title>project1</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andika">
-    <link rel="stylesheet" href="/assets/css/Article-List.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Article-List.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
@@ -17,16 +17,72 @@
             <div
                 class="collapse navbar-collapse text-dark" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" style="font-size: 20px;" href="/index.html">Presentazione</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/teoria.html" style="font-size: 20px;">Teoria</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" style="font-size: 20px;" href="index.html">Presentazione</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="teoria.html" style="font-size: 20px;">Teoria</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" style="font-size: 20px;">Istruzioni</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="game/game.html" style="font-size: 20px;">Applicazione</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="applicazione.html" style="font-size: 20px;">Applicazione</a></li>
                 </ul>
         </div>
         </div>
-    </nav>
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    </nav><div class="container">
+    <hr>
+<h1 id="manuale-utente">Manuale Utente</h1>
+<p><img src="assets/img/i_empty.png" alt="IMMAGINE INTERFACCIA VUOTA" width="70%" height="70%"></p>
+<p>Per iniziare l utente deve premere una delle TAB evidenziate, è possibile spostare la telecamera attorno al punto 0,0,0 tenendo premuto con il tasto destro del mouse e spostando il mouse.</p>
+<h2 id="world-settings">World Settings</h2>
+<p><img src="assets/img/i_world_settings.png" alt="WORLD SETTINGS" width="70%" height="70%"></p>
+<p>Valori legati alla tecnica di raymarching della scena</p>
+<ul>
+<li><p><strong>Camera Distance</strong>: distanza della camera dal punto 0,0,0 del mondo.</p>
+</li>
+<li><p><strong>Precision</strong>, cioè la precisione dell&#39;algoritmo a delineare i bordi della forma.</p>
+</li>
+<li><p><strong>Smoothness</strong>: determina il grado di smoothness degli operatori, quanto viene arrotondato il bordo in cui due figure interagiscono.</p>
+</li>
+<li><p><strong>Max Distance</strong>: fino a quanto lontano può arrivare il raggio, definisce la distanza massima degli oggetti renderizzati, quindi oggetti troppo lontani non vengono renderizzati </p>
+</li>
+<li><p><strong>Max Steps</strong>: quanto l&#39;algoritmo può far avanzare il raggio</p>
+</li>
+<li><p><strong>Plane</strong>: crea un piano orizzontale sul punto 0,0,0 </p>
+</li>
+</ul>
+<h2 id="block-settings">Block Settings</h2>
+<p><img src="assets/img/i_block_info_empty.png" alt="immagine block senza figura" width="70%" height="70%"></p>
+<ul>
+<li><strong>ADD</strong>: Premendo ADD viene generata una figura di default nel punto 0,0,0, di forma sferica di colore rosso </li>
+</ul>
+<p><img src="assets/img/i_block_info.png" alt="Immagine dopo creazione della figura" width="70%" height="70%"></p>
+<ul>
+<li><p><strong>REMOVE</strong>: Premendo REMOVE la figura viene rimossa dalla scena e con lei le impostazioni di quella figura</p>
+</li>
+<li><p><strong>Shape</strong>: dalla tendina è possibile modificare la forma della figura a schermo, da sfera a cubo a toro. </p>
+</li>
+<li><p><strong>Operator</strong>: dalla tendina è possibile modificare l operatore  con la quale la figura interagisce con le altre. </p>
+<ul>
+<li><strong>Union</strong> le figure si uniscono tra loro </li>
+<li><strong>Subtraction</strong> la figura sovrapposta elimina la parte sovrapposta sull&#39;altra figura.</li>
+<li><strong>Intersection</strong> il risultato della scena è la sovrapposizione di tutte le figure nella scena, quindi l&#39;intersezione tra le figure. </li>
+</ul>
+</li>
+<li><p><strong>Select</strong>: pulsante che applica un outline sulla figura nella scena per evidenziarla dagli altri </p>
+</li>
+<li><p><strong>Size</strong>: permette di scegliere la dimensione della figura</p>
+</li>
+<li><p><strong>Z-Position</strong>: permette di definire la profondità nello spazio</p>
+</li>
+<li><p><strong>Rotation Angle</strong>: permette di definire l angolo di rotazione della figura sull asse di rotazione scelta</p>
+</li>
+<li><p><strong>Rotation Axis</strong>: permette di definire mediante le opzioni nella tendina l&#39;asse su cui applicare la rotazione su quella figura </p>
+</li>
+<li><p><strong>Color</strong>: si può definire quale colore usare sulla figura </p>
+</li>
+<li><p>Si può spostare la figura cliccandola con il tasto sinistro del mouse facendo drag and drop. </p>
+</li>
+</ul>
+
+</div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
