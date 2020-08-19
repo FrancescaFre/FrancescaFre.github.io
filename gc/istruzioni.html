@@ -14,74 +14,144 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-md text-dark bg-dark" style="height: 85px;">
-        <div class="container-fluid"><a class="navbar-brand" href="index.html" style="font-size: 38px;">Metaballs con Raymarcing</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse text-dark" id="navcol-1">
+        <div class="container-fluid"><a class="navbar-brand" href="index.html" style="font-size: 38px;">Metaballs con
+                Raymarcing</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span
+                    class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse text-dark" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" style="font-size: 20px;" href="index.html">Presentazione</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="teoria.html" style="font-size: 20px;">Teoria</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" style="font-size: 20px;">Istruzioni</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="game/game.html" style="font-size: 20px;">Applicazione</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" style="font-size: 20px;"
+                            href="index.html">Presentazione</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="teoria.html"
+                            style="font-size: 20px;">Teoria</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" style="font-size: 20px;">Manuale
+                            Utente</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="game/game.html"
+                            style="font-size: 20px;">Applicazione</a></li>
                 </ul>
+            </div>
         </div>
-        </div>
-    </nav><div class="container">
-    <hr>
-<h1 id="manuale-utente">Manuale Utente</h1>
-<p><img src="assets/img/i_empty.png" alt="IMMAGINE INTERFACCIA VUOTA" width="70%" height="70%"></p>
-<p>Per iniziare l utente deve premere una delle TAB evidenziate, è possibile spostare la telecamera attorno al punto 0,0,0 tenendo premuto con il tasto destro del mouse e spostando il mouse.</p>
-<h2 id="world-settings">World Settings</h2>
-<p><img src="assets/img/i_world_settings.png" alt="WORLD SETTINGS" width="70%" height="70%"></p>
-<p>Valori legati alla tecnica di raymarching della scena</p>
-<ul>
-<li><p><strong>Camera Distance</strong>: distanza della camera dal punto 0,0,0 del mondo.</p>
-</li>
-<li><p><strong>Precision</strong>, cioè la precisione dell&#39;algoritmo a delineare i bordi della forma.</p>
-</li>
-<li><p><strong>Smoothness</strong>: determina il grado di smoothness degli operatori, quanto viene arrotondato il bordo in cui due figure interagiscono.</p>
-</li>
-<li><p><strong>Max Distance</strong>: fino a quanto lontano può arrivare il raggio, definisce la distanza massima degli oggetti renderizzati, quindi oggetti troppo lontani non vengono renderizzati </p>
-</li>
-<li><p><strong>Max Steps</strong>: quanto l&#39;algoritmo può far avanzare il raggio</p>
-</li>
-<li><p><strong>Plane</strong>: crea un piano orizzontale sul punto 0,0,0 </p>
-</li>
-</ul>
-<h2 id="block-settings">Block Settings</h2>
-<p><img src="assets/img/i_block_info_empty.png" alt="immagine block senza figura" width="70%" height="70%"></p>
-<ul>
-<li><strong>ADD</strong>: Premendo ADD viene generata una figura di default nel punto 0,0,0, di forma sferica di colore rosso </li>
-</ul>
-<p><img src="assets/img/i_block_info.png" alt="Immagine dopo creazione della figura" width="70%" height="70%"></p>
-<ul>
-<li><p><strong>REMOVE</strong>: Premendo REMOVE la figura viene rimossa dalla scena e con lei le impostazioni di quella figura</p>
-</li>
-<li><p><strong>Shape</strong>: dalla tendina è possibile modificare la forma della figura a schermo, da sfera a cubo a toro. </p>
-</li>
-<li><p><strong>Operator</strong>: dalla tendina è possibile modificare l operatore  con la quale la figura interagisce con le altre. </p>
-<ul>
-<li><strong>Union</strong> le figure si uniscono tra loro </li>
-<li><strong>Subtraction</strong> la figura sovrapposta elimina la parte sovrapposta sull&#39;altra figura.</li>
-<li><strong>Intersection</strong> il risultato della scena è la sovrapposizione di tutte le figure nella scena, quindi l&#39;intersezione tra le figure. </li>
-</ul>
-</li>
-<li><p><strong>Select</strong>: pulsante che applica un outline sulla figura nella scena per evidenziarla dagli altri </p>
-</li>
-<li><p><strong>Size</strong>: permette di scegliere la dimensione della figura</p>
-</li>
-<li><p><strong>Z-Position</strong>: permette di definire la profondità nello spazio</p>
-</li>
-<li><p><strong>Rotation Angle</strong>: permette di definire l angolo di rotazione della figura sull asse di rotazione scelta</p>
-</li>
-<li><p><strong>Rotation Axis</strong>: permette di definire mediante le opzioni nella tendina l&#39;asse su cui applicare la rotazione su quella figura </p>
-</li>
-<li><p><strong>Color</strong>: si può definire quale colore usare sulla figura </p>
-</li>
-<li><p>Si può spostare la figura cliccandola con il tasto sinistro del mouse facendo drag and drop. </p>
-</li>
-</ul>
+    </nav>
+    <div class="container">
+        
 
-</div>
+        <h1 id="manuale-utente">Manuale Utente</h1>
+        <h2>Prerequisiti</h2>
+        <p><li>Abilitare <code>WebGL2.0</code> sul proprio browser</li></p>
+        <dl>
+            <dt>Chrome e Microsoft EDGE</dt>
+                <ol>
+                    <li>Digitare sulla barra degli indirizzi per Chrome: <code>chrome://flags</code> per EDGE: <code>edge://flags</code></li>
+                    <li>Cercare nella barra di ricerca presente <code>webgl 2.0</code></li>
+                    <li>Abilitare il risultato <code>WebGL 2.0 Compute</code> e <code>WebGL Draft Extensions</code></li>
+                    <li>Riavviare il browser se non viene visualizzato dopo il caricamento</li>
+                </ol>
+            <dt>Firefox</dt>
+            <ol>
+                <li>Digitare sulla barra degli indirizzi <code>about:config</code></li>
+                <li>Cercare nella barra di ricerca presente <code>webgl2</code></li>
+                <li>Abilitare il risultato <code>webgl.enable-prototype-webgl2</code> facendo doppio click sulla riga finchè il valore a destra non diventa <code>true</code></li>
+                <li>Riavviare il browser se non viene visualizzato dopo il caricamento</li>
+            </ol>
+            <dt>Safari</dt>
+            <ol>
+                <li>Aprire <code>Preference</code></li>
+                <li>Cliccare su <code>Advanced</code> e <code>Preference</code></li>
+                <li>Alla base della pagina cercare <code>Show Develop</code></li>
+                <li>Aprire il menù <code>Develop</code> e selezionare <code>Enable WebGL</code> </li>
+                <li>Riavviare il browser se non viene visualizzato dopo il caricamento</li>
+            </ol>
+        </dl>
+
+        <p><li>Browser su cui è stato testato l'applicativo:  <code>Chrome</code>,  <code>Firefox</code>,  <code>Edge</code> </li>
+            <hr>
+            <h2 id="world-settings">Uso applicazione</h2>
+            <p>Per iniziare l utente deve premere una delle TAB che hanno un colore più vivido rispetto a quelle ritenute "spente".</br> L'utente ha la possibilità di spostare la telecamera in una sfera centrata nel punto dell'origine della scena (0,0,0) 
+                tenendo premuto con il tasto destro del mouse e spostando il mouse.</p>
+        <p><img src="assets/img/i_empty.png" alt="IMMAGINE INTERFACCIA VUOTA" width="70%" height="70%"></p>
+        <hr>
+        <h2 id="world-settings">World Settings</h2>
+        <p><img src="assets/img/i_world_settings.png" alt="WORLD SETTINGS" width="70%" height="70%"></p>
+        <p>Interfaccia dedicata alla possibilità di modificare <a href="teoria.html#chiave" target="_blank">valori chiave</a> legati alla tecnica di raymarching della scena, sarà sempre la prima TAB indipendentemente dal numero di oggetti sulla scena
+        </br>I parametri influiscono su come la scena viene visualizzata, per aiutarsi è utile attivare il "PLANE" per vedere come diversi valori influiscono sulla resa finale della tecnica di raymarching.</p>
+        <ul>
+            <li>
+                <p><strong>Camera Distance</strong>: distanza della camera dal punto 0,0,0 del mondo.</p>
+            </li>
+            <li>
+                <p><strong>Precision</strong>, cioè la precisione dell&#39;algoritmo (vedi valori chiave) a delineare i bordi della forma.
+                </p>
+            </li>
+            <li>
+                <p><strong>Smoothness</strong>: determina il grado di smoothness degli operatori, quanto viene
+                    arrotondato il bordo in cui due figure interagiscono.</p>
+            </li>
+            <li>
+                <p><strong>Max Distance</strong>: fino a quanto lontano può arrivare il raggio, definisce la distanza
+                    massima degli oggetti renderizzati (vedi valori chiave), quindi oggetti troppo lontani non vengono renderizzati perchè impossibili da raggiungere dal raggio. </p>
+            </li>
+            <li>
+                <p><strong>Max Steps</strong>: quanto l'algoritmo può far avanzare il raggio (vedi valori chiave), un valore alto permette di rimuovere deformazioni che si possono creare in quanto il raggio non ha esplorato abbastanza lo spazio nel mondo.</p>
+            </li>
+            <li>
+                <p><strong>Plane</strong>: Viene creato un semispazio passivo agli operatori delle figure nella scena, illimitato ad altezza y = -2 del sistema di riferimento. Pesante computazionalmente, se l'applicativo rallenta, valutare di rimuoverlo.</p>
+            </li>
+        </ul>
+        <hr>
+        <h2 id="block-settings">Block Settings</h2>
+        <p><img src="assets/img/i_block_info_empty.png" alt="immagine block senza figura" width="70%" height="70%"></p>
+        <ul>
+            <li><strong>ADD</strong>: Premendo ADD viene generata una figura di default nel punto 0,0,0, di forma
+                sferica di colore rosso. </li>
+        </ul>
+        <p><img src="assets/img/i_block_info.png" alt="Immagine dopo creazione della figura" width="70%" height="70%">
+        </p>
+        <ul>
+            <li>
+                <p><strong>REMOVE</strong>: Premendo REMOVE la figura viene rimossa dalla scena e con lei le
+                    impostazioni di quella figura.</p>
+            </li>
+            <li>
+                <p><strong>Shape</strong>: dalla tendina è possibile modificare la forma della figura a schermo, da
+                    sfera a cubo a toro. </p>
+            </li>
+            <li>
+                <p><strong>Operator</strong>: dalla tendina è possibile modificare l'<a href="teoria.html#operators" target="_blank">operatore</a> con la quale la figura
+                    interagisce con le altre. Non a coppie, ma con tutte quelle presenti nella scena, compreso il PLANE.</p>
+                <ul>
+                    <li><strong>Union</strong> le figure si uniscono tra loro fondendosi. </li>
+                    <li><strong>Subtraction</strong> la figura sovrapposta elimina la parte sovrapposta sull&#39;altra
+                        figura. Detta unione negativa.</br></li>
+                    <li><strong>Intersection</strong> il risultato dell'intersezione di tutta la scena con la figura che ha l'operazione di intersezione.</li>
+                </ul>
+            </li>
+        </br>
+            <li>
+                <p><strong>Select</strong>: pulsante che applica un contorno sulla figura nella scena per evidenziarla
+                    dalle altre. </p>
+            </li>
+            <li>
+                <p><strong>Size</strong>: permette di scegliere la dimensione della figura.</p>
+            </li>
+            <li>
+                <p><strong>X/Y/Z-Position</strong>: permette di definire la posizione nello spazio tramite slider, è possibile farlo anche mediante drag and drop della figura mediante il tasto sinistro del mouse.</p>
+            </li>
+            <li>
+                <p><strong>Rotation Axis</strong>: permette di definire mediante le opzioni nella tendina l'asse su
+                    cui applicare la rotazione su quella figura. Può essere l'asse X, asse Y o asse Z.</p>
+            </li>
+            <li>
+                <p><strong>Rotation Angle</strong>: permette di definire l'angolo di rotazione della figura sull asse di
+                    rotazione scelta.</p>
+            </li>
+            <li>
+                <p><strong>Color</strong>: si può definire quale colore usare sulla figura. </p>
+            </li>
+            <li>
+                <p>Si può spostare la figura cliccandola con il tasto sinistro del mouse facendo drag and drop. </p>
+            </li>
+        </ul>
+
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
