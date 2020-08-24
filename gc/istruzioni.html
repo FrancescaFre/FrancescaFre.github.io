@@ -10,6 +10,21 @@
     <link rel="stylesheet" href="assets/css/Article-List.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+    <style>
+        .foo img:last-child {
+            display: none
+        }
+
+        .foo:hover img:first-child {
+            display: none
+        }
+
+        .foo:hover img:last-child {
+            display: block
+        }
+    </style>
+
 </head>
 
 <body>
@@ -32,24 +47,28 @@
         </div>
     </nav>
     <div class="container">
-        
+
 
         <h1 id="manuale-utente">Manuale Utente</h1>
         <h2>Prerequisiti</h2>
-        <p><li>Abilitare <code>WebGL2.0</code> sul proprio browser</li></p>
+        <p>
+            <li>Abilitare <code>WebGL2.0</code> sul proprio browser</li>
+        </p>
         <dl>
             <dt>Chrome e Microsoft EDGE</dt>
-                <ol>
-                    <li>Digitare sulla barra degli indirizzi per Chrome: <code>chrome://flags</code> per EDGE: <code>edge://flags</code></li>
-                    <li>Cercare nella barra di ricerca presente <code>webgl 2.0</code></li>
-                    <li>Abilitare il risultato <code>WebGL 2.0 Compute</code> e <code>WebGL Draft Extensions</code></li>
-                    <li>Riavviare il browser se non viene visualizzato dopo il caricamento</li>
-                </ol>
+            <ol>
+                <li>Digitare sulla barra degli indirizzi per Chrome: <code>chrome://flags</code> per EDGE:
+                    <code>edge://flags</code></li>
+                <li>Cercare nella barra di ricerca presente <code>webgl 2.0</code></li>
+                <li>Abilitare il risultato <code>WebGL 2.0 Compute</code> e <code>WebGL Draft Extensions</code></li>
+                <li>Riavviare il browser se non viene visualizzato dopo il caricamento</li>
+            </ol>
             <dt>Firefox</dt>
             <ol>
                 <li>Digitare sulla barra degli indirizzi <code>about:config</code></li>
                 <li>Cercare nella barra di ricerca presente <code>webgl2</code></li>
-                <li>Abilitare il risultato <code>webgl.enable-prototype-webgl2</code> facendo doppio click sulla riga finchè il valore a destra non diventa <code>true</code></li>
+                <li>Abilitare il risultato <code>webgl.enable-prototype-webgl2</code> facendo doppio click sulla riga
+                    finchè il valore a destra non diventa <code>true</code></li>
                 <li>Riavviare il browser se non viene visualizzato dopo il caricamento</li>
             </ol>
             <dt>Safari</dt>
@@ -62,23 +81,39 @@
             </ol>
         </dl>
 
-        <p><li>Browser su cui è stato testato l'applicativo:  <code>Chrome</code>,  <code>Firefox</code>,  <code>Edge</code> </li>
+        <p>
+            <li>Browser su cui è stato testato l'applicativo: <code>Chrome</code>, <code>Firefox</code>,
+                <code>Edge</code> </li>
             <hr>
-            <h2 id="world-settings">Uso applicazione</h2>
-            <p>Per iniziare l utente deve premere una delle TAB che hanno un colore più vivido rispetto a quelle ritenute "spente".</br> L'utente ha la possibilità di spostare la telecamera in una sfera centrata nel punto dell'origine della scena (0,0,0) 
-                tenendo premuto con il tasto destro del mouse e spostando il mouse.</p>
-        <p><img src="assets/img/i_empty.png" alt="IMMAGINE INTERFACCIA VUOTA" width="70%" height="70%"></p>
+        ⚠ - Per aver ulteriori informazioni, passa il mouse sulle immagini!
+        <br>
+        <h2 id="world-settings">Uso applicazione</h2>
+        <p>Per iniziare l utente deve premere una delle TAB che hanno un colore più vivido rispetto a quelle ritenute
+            "spente".</br> L'utente ha la possibilità di spostare la telecamera in una sfera centrata nel punto
+            dell'origine della scena (0,0,0)
+            tenendo premuto con il tasto destro del mouse e spostando il mouse.</p>
+        <a class="foo">
+            <img src="assets/img/i_empty.png" alt="IMMAGINE INTERFACCIA VUOTA" width="70%" height="70%">
+            <img src="assets/img/i_empty_notes.png" alt="IMMAGINE INTERFACCIA VUOTA" width="70%" height="70%">
+        </a>
         <hr>
         <h2 id="world-settings">World Settings</h2>
-        <p><img src="assets/img/i_world_settings.png" alt="WORLD SETTINGS" width="70%" height="70%"></p>
-        <p>Interfaccia dedicata alla possibilità di modificare <a href="teoria.html#chiave" target="_blank">valori chiave</a> legati alla tecnica di raymarching della scena, sarà sempre la prima TAB indipendentemente dal numero di oggetti sulla scena
-        </br>I parametri influiscono su come la scena viene visualizzata, per aiutarsi è utile attivare il "PLANE" per vedere come diversi valori influiscono sulla resa finale della tecnica di raymarching.</p>
+        <a class="foo">
+            <img src="assets/img/i_world_settings.png" width="70%" height="70%">
+            <img src="assets/img/i_world_settings_notes.png" width="70%" height="70%">
+        </a>
+        <p>Interfaccia dedicata alla possibilità di modificare <a href="teoria.html#chiave" target="_blank">valori
+                chiave</a> legati alla tecnica di raymarching della scena, sarà sempre la prima TAB indipendentemente
+            dal numero di oggetti sulla scena
+            </br>I parametri influiscono su come la scena viene visualizzata, per aiutarsi è utile attivare il "PLANE"
+            per vedere come diversi valori influiscono sulla resa finale della tecnica di raymarching.</p>
         <ul>
             <li>
                 <p><strong>Camera Distance</strong>: distanza della camera dal punto 0,0,0 del mondo.</p>
             </li>
             <li>
-                <p><strong>Precision</strong>, cioè la precisione dell&#39;algoritmo (vedi valori chiave) a delineare i bordi della forma.
+                <p><strong>Precision</strong>, cioè la precisione dell&#39;algoritmo (vedi valori chiave) a delineare i
+                    bordi della forma.
                 </p>
             </li>
             <li>
@@ -87,24 +122,35 @@
             </li>
             <li>
                 <p><strong>Max Distance</strong>: fino a quanto lontano può arrivare il raggio, definisce la distanza
-                    massima degli oggetti renderizzati (vedi valori chiave), quindi oggetti troppo lontani non vengono renderizzati perchè impossibili da raggiungere dal raggio. </p>
+                    massima degli oggetti renderizzati (vedi valori chiave), quindi oggetti troppo lontani non vengono
+                    renderizzati perchè impossibili da raggiungere dal raggio. </p>
             </li>
             <li>
-                <p><strong>Max Steps</strong>: quanto l'algoritmo può far avanzare il raggio (vedi valori chiave), un valore alto permette di rimuovere deformazioni che si possono creare in quanto il raggio non ha esplorato abbastanza lo spazio nel mondo.</p>
+                <p><strong>Max Steps</strong>: quanto l'algoritmo può far avanzare il raggio (vedi valori chiave), un
+                    valore alto permette di rimuovere deformazioni che si possono creare in quanto il raggio non ha
+                    esplorato abbastanza lo spazio nel mondo.</p>
             </li>
             <li>
-                <p><strong>Plane</strong>: Viene creato un semispazio passivo agli operatori delle figure nella scena, illimitato ad altezza y = -2 del sistema di riferimento. Pesante computazionalmente, se l'applicativo rallenta, valutare di rimuoverlo.</p>
+                <p><strong>Plane</strong>: Viene creato un semispazio passivo agli operatori delle figure nella scena,
+                    illimitato ad altezza y = -2 del sistema di riferimento. 
+                </br>⚠ Pesante computazionalmente, se
+                    l'applicativo rallenta, valutare di rimuoverlo.</p>
             </li>
         </ul>
         <hr>
         <h2 id="block-settings">Block Settings</h2>
-        <p><img src="assets/img/i_block_info_empty.png" alt="immagine block senza figura" width="70%" height="70%"></p>
+        <a class="foo">
+            <img src="assets/img/i_block_info_empty.png" alt="immagine block senza figura" width="70%" height="70%">
+            <img src="assets/img/i_block_info_empty_notes.png" alt="immagine block senza figura" width="70%" height="70%">
+        </a>
         <ul>
             <li><strong>ADD</strong>: Premendo ADD viene generata una figura di default nel punto 0,0,0, di forma
                 sferica di colore rosso. </li>
         </ul>
-        <p><img src="assets/img/i_block_info.png" alt="Immagine dopo creazione della figura" width="70%" height="70%">
-        </p>
+        <a class="foo">
+            <img src="assets/img/i_block_info.png" alt="Immagine dopo creazione della figura" width="70%" height="70%">
+            <img src="assets/img/i_block_info_notes.png" alt="Immagine dopo creazione della figura" width="70%" height="70%">
+        </a>
         <ul>
             <li>
                 <p><strong>REMOVE</strong>: Premendo REMOVE la figura viene rimossa dalla scena e con lei le
@@ -115,16 +161,19 @@
                     sfera a cubo a toro. </p>
             </li>
             <li>
-                <p><strong>Operator</strong>: dalla tendina è possibile modificare l'<a href="teoria.html#operators" target="_blank">operatore</a> con la quale la figura
-                    interagisce con le altre. Non a coppie, ma con tutte quelle presenti nella scena, compreso il PLANE.</p>
+                <p><strong>Operator</strong>: dalla tendina è possibile modificare l'<a href="teoria.html#operators"
+                        target="_blank">operatore</a> con la quale la figura
+                    interagisce con le altre. Non a coppie, ma con tutte quelle presenti nella scena, compreso il PLANE.
+                </p>
                 <ul>
                     <li><strong>Union</strong> le figure si uniscono tra loro fondendosi. </li>
                     <li><strong>Subtraction</strong> la figura sovrapposta elimina la parte sovrapposta sull&#39;altra
                         figura. Detta unione negativa.</br></li>
-                    <li><strong>Intersection</strong> il risultato dell'intersezione di tutta la scena con la figura che ha l'operazione di intersezione.</li>
+                    <li><strong>Intersection</strong> il risultato dell'intersezione di tutta la scena con la figura che
+                        ha l'operazione di intersezione.</li>
                 </ul>
             </li>
-        </br>
+            </br>
             <li>
                 <p><strong>Select</strong>: pulsante che applica un contorno sulla figura nella scena per evidenziarla
                     dalle altre. </p>
@@ -133,7 +182,8 @@
                 <p><strong>Size</strong>: permette di scegliere la dimensione della figura.</p>
             </li>
             <li>
-                <p><strong>X/Y/Z-Position</strong>: permette di definire la posizione nello spazio tramite slider, è possibile farlo anche mediante drag and drop della figura mediante il tasto sinistro del mouse.</p>
+                <p><strong>X/Y/Z-Position</strong>: permette di definire la posizione nello spazio tramite slider, è
+                    possibile farlo anche mediante drag and drop della figura mediante il tasto sinistro del mouse.</p>
             </li>
             <li>
                 <p><strong>Rotation Axis</strong>: permette di definire mediante le opzioni nella tendina l'asse su
