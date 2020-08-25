@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Raymarcing Metaballs</title>
+    <title>Raymarching Metaballs</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andika">
     <link rel="stylesheet" href="assets/css/Article-List.css">
@@ -30,7 +30,7 @@
 <body>
     <nav class="navbar navbar-dark navbar-expand-md text-dark bg-dark" style="height: 85px;">
         <div class="container-fluid"><a class="navbar-brand" href="index.html" style="font-size: 38px;">Metaballs con
-                Raymarcing</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span
+                Raymarching</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span
                     class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse text-dark" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
@@ -86,8 +86,11 @@
                 <code>Edge</code> </li>
             <hr>
         <h2>Preview</h2>
-        <!-- https://support.google.com/blogger/thread/1950766?hl=en --> 
+        <!-- https://support.google.com/blogger/thread/1950766?hl=en 
         <iframe src="https://drive.google.com/file/d/1tc-0lniUS_9kCIuZ1LiJtMB46rOaNQ95/preview" width="640" height="480" style="margin-left: auto; margin-right: auto; display:block"></iframe>
+         --> 
+         <iframe width="640" height="359" src="https://www.youtube.com/embed/fOOQwsPj678" style="margin-left: auto; margin-right: auto; display:block" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
         <hr>
         ⚠ - Per aver ulteriori informazioni, passa il mouse sulle immagini!
         <br>
@@ -150,7 +153,9 @@
         </a>
         <ul>
             <li><strong>ADD</strong>: Premendo ADD viene generata una figura di default nel punto 0,0,0, di forma
-                sferica di colore rosso. </li>
+                sferica di colore rosso. 
+            <br>⚠ I cambiamenti nelle impostazioni effettuati prima della creazione della figura verranno persi, assicurarsi di creare l'oggetto, poi successivamente cambiarne i valori o caratteristiche (quali forma, colore, operatore e così via).</li>
+            <br>⚠ Per aggiungere un nuovo oggetto è importante cambiare TAB in quanto ogni TAB corrisponde ad un oggetto della scena. 
         </ul>
         <a class="foo">
             <img src="assets/img/i_block_info.png" alt="Immagine dopo creazione della figura" width="70%" height="70%">
@@ -192,13 +197,14 @@
             </li>
             <li>
                 <p><strong>Rotation Axis</strong>: permette di definire mediante le opzioni nella tendina l'asse su
-                    cui applicare la rotazione su quella figura. Può essere l'asse X, asse Y o asse Z.
-                ⚠ Feature non disponibile nella versione browser, l'asse di default è Z, se vuoi provare con gli altri assi <a href="game/921900Project.zip" download="Metaballs">
+                    cui applicare la rotazione su quella figura. Può essere l'asse X, asse Y o asse Z. X, Y e Z sono gli assi del mondo, non legati alla posizione della telecamera. 
+                    <br>
+                ⚠ Feature non disponibile nella versione browser, l'asse di default è Z (dei programmatori, quindi la profondità), se vuoi provare con gli altri assi <a href="game/921900Project.zip" download="Metaballs">
                     scarica l'applicazione</a>.</p>
             </li>
             <li>
                 <p><strong>Rotation Angle</strong>: permette di definire l'angolo di rotazione della figura sull asse di
-                    rotazione scelta.</p>
+                    rotazione scelta. Per definire la rotazione occorre muovere il cursore sulla barra. </p>
             </li>
             <li>
                 <p><strong>Color</strong>: si può definire quale colore usare sulla figura. </p>
@@ -214,3 +220,6 @@
 </body>
 
 </html>
+
+* asse Z DEI PROGRAMMATORI, quindi asse della profondità DEL MONDO
+* per applicare la rotazione bisogna muovere il cursore sulla barra 
